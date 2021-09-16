@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"unicode/utf8"
+	"strings"
 )
 
 func main() {
@@ -15,14 +15,14 @@ func main() {
 		fmt.Println("\n-------------------------------------------------------------")
 		fmt.Println("Please enter you palindrome: (type 'exit' to end the program) ")
 		fmt.Scanln(&inputPalindrome)
-
 		if inputPalindrome == "exit" {
 			break
 		}
+		sliceInput := strings.Split(inputPalindrome, "")
+		inputLen = len(sliceInput)
 
-		inputLen = utf8.RuneCountInString(inputPalindrome)
 		for i := 0; i < inputLen; i++ {
-			if string(inputPalindrome[i]) == string(inputPalindrome[inputLen-(i+1)]) {
+			if string(sliceInput[i]) == string(sliceInput[inputLen-(i+1)]) {
 				isPalindrome = true
 				continue
 			} else {
